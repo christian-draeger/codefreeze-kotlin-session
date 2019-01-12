@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/christian-draeger/codefreeze-kotlin-session.svg?branch=master)](https://travis-ci.org/christian-draeger/codefreeze-kotlin-session)
+
 Kotlin Session
 ==============
 CodeFreeze 2019
