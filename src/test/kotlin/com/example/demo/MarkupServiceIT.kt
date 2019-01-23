@@ -1,32 +1,37 @@
 package com.example.demo
 
-import org.assertj.core.api.SoftAssertions
+import it.skrape.core.skrape
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.junit4.SpringRunner
-import paco.annotations.Fetch
-import paco.runner.Paco
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @RunWith(SpringRunner::class)
-class MarkupServiceIT : Paco() {
+class MarkupServiceIT {
+
+    @LocalServerPort
+    private var port: Int = 0
 
     @Test
-    @Fetch(url = "localhost:8080/html")
-    fun name() {
-        val response = page.get()
+    fun `use skrapeit to test markup`() {
 
-        val softly = SoftAssertions()
+        skrape {
+            url = "http://localhost:$port/html"
 
-        softly.assertThat(response.statusCode).isEqualTo(200)
+            response {
+                assertThat(statusCode).isEqualTo(200)
 
-        softly.assertThat(response.getElement("title").text())
-                .isEqualTo("codefreeze-kotlin-session")
+                element("title") {
+                    assertThat(text()).isEqualTo("codefreeze-kotlin-session")
+                }
 
-        softly.assertThat(response.getElement("div h1").text())
-                .isEqualTo("This HTML markup has been written with the kotlin HTML DSL.")
-
-        softly.assertAll()
+                element("div h1") {
+                    assertThat(text()).isEqualTo("This HTML markup has been written with the kotlin HTML DSL.")
+                }
+            }
+        }
     }
 }

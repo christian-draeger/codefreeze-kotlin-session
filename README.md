@@ -19,3 +19,14 @@ Download Slides:
 
 ##### There's a nice repo ([Kotlin Koans](https://play.kotlinlang.org/koans/overview)) to learn basic.
 ##### You can find pretty easy to understand examples at the [Kotlin by Example](https://play.kotlinlang.org/byExample/overview) page.
+
+## Code Examples
+#### run all tests
+
+	./mvnw clean verify
+	
+#### start application locally
+###### application will be served on port 8080
+
+	./mvnw spring-boot:run
+	

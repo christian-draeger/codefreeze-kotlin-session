@@ -64,9 +64,9 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>io.github.christian-draeger</groupId>
-            <artifactId>page-content-tester</artifactId>
-            <version>1.8.6</version>
+            <groupId>it.skrape</groupId>
+            <artifactId>core</artifactId>
+            <version>0.1.0-beta2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
